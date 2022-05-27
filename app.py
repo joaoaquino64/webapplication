@@ -10,5 +10,3 @@ def hello():
     return 'Hello World'
 
 app.run()
-
-print('Olá Mundo')
