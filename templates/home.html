@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,17 +9,37 @@
 </head>
 <body>
 
-    <table>
-    {% for dog in dogs %}
-        <tr>
-            <td>{{dog['nome']}}</td>
-            <td>{{dog['raça']}}</td>
-            <td>{{dog['status']}}</td>
-        </tr>
-    {% endfor %}
-    </table>
-    
-    <div align="center">
+    <div class="container"> 
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Raça</th>
+                    <th>Idade</th>
+                    <th>Status</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {% for dog in dogs %}
+                <tr>
+                    <td>{{dog['nome']}}</td>
+                    <td>{{dog['raça']}}</td>
+                    <td></td>
+                    <td>{{dog['status']}}</td>
+                    <a href="#" class="btn btn-warning">Editar</a>
+                    <a href="#" class="btn btn-succes">Adotar</a>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <a href="#" class="btn btn-primary">Adicionar</a>
+    </div>
+
+    <div class="container">
     <img src="https://user-images.githubusercontent.com/106403108/172497692-467fa8d9-fcdd-4689-9761-14fe905dce38.png" width="150px">
     </div>
 

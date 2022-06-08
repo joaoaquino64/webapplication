@@ -8,14 +8,14 @@ app = Flask(__name__)
 
 
 dogs = [
-    {'id': 1, 'nome': 'Thor', 'raça': 'Yorkshire', 'status': 'adoção'},
-    {'id': 2, 'nome': 'Lola', 'raça': 'Shitzu', 'status': 'adoção'},
-    {'id': 3, 'nome': 'Joaquim', 'raça': 'Buldog francês', 'status': 'adoção'}
+    {'id': 1, 'nome': 'Thor', 'raça': 'Yorkshire', 'status': 'pronto para adoção'},
+    {'id': 2, 'nome': 'Lola', 'raça': 'Shitzu', 'status': 'necessita vacinação'},
+    {'id': 3, 'nome': 'Joaquim', 'raça': 'Buldog francês', 'status': 'necessita cuidados especiais'}
 ]
 
 with open('dogs.csv', 'wt') as file_out:
     escritor = csv.writer(file_out)
-    escritor.writeows(dogs)
+    escritor.writerows(dogs)
 
 @app.route('/')
 def home():
