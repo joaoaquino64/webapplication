@@ -17,8 +17,6 @@
                     <th>Raça</th>
                     <th>Idade</th>
                     <th>Status</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody> 
@@ -28,8 +26,8 @@
                     <td>{{dog['raça']}}</td>
                     <td></td>
                     <td>{{dog['status']}}</td>
-                    <a href="#" class="btn btn-warning">Editar</a>
-                    <a href="#" class="btn btn-succes">Adotar</a>
+                    <td><a href="#" class="btn btn-warning">Editar</a></td>
+                    <td><a href="#" class="btn btn-success">Adotar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
