@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Editar</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Edite seu cachorro</h3>
+    </div>
+    
+        <div class="container">
+            <form action="/update/{{dog['id']}}" method="POST">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <br>
+                    <input value="{{dog['Nome']}}" type="text" name="Nome" class="form-group"/>
+                    <br>
+                </div>
+                <div class="form-group">   
+                    <label>Raça</label>
+                    <br>
+                    <input value="{{dog['Raça']}}" type="text" name="Raça" class="form-group"/>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label>Cor</label>
+                    <br>
+                    <input value="{{dog['Cor']}}" type="text" name="Cor" class="form-group"/>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label>Idade</label>
+                    <br>
+                    <input value="{{dog['Idade']}}" type="text" name="Idade" class="form-group"/>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label>Status (se está pronto para ser adotado, precisa de cuidados especiais, precisa de vacinação, etc.)</label>
+                    <br>
+                    <input value="{{dog['Status']}}" type="text" name="Status" class="form-group"/>
+                    <br>
+                </div>
+                <button class="btn btn-warning" style="margin-top: 20px">Atualizar</button>
+            </form>
+        </div>
+    
+</body>
+</html>

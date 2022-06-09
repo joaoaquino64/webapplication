@@ -33,4 +33,29 @@ def save():
     dogs.append({'id': uuid4(), 'Nome': nome, 'Raça': raça, 'Cor': cor, 'Idade': idade, 'Status': status})
     return redirect('/')
 
+@app.route('/edit/<id>')
+def edit(id):
+    for dog in dogs:
+        id_string = str(dog['id'])
+        if id_string == id: 
+            return render_template('edit.html', dog=dog)
+
+@app.route('/update/<id>', methods=['POST'])
+def update(id):
+    for dog in dogs:
+        id_string = str(dog['id'])
+        if id_string == id:
+            dog_editado = dogs.index(dog)
+            id_dog_editado = dog['id']
+
+    nome = request.form['Nome']
+    raça = request.form['Raça']
+    cor = request.form['Cor']
+    idade = request.form['Idade']
+    status = request.form['Status']
+    dogs[dog_editado] = {'id': id_dog_editado, 'Nome': nome, 'Raça': raça, 'Cor': cor, 'idade': idade, 'Status': status}
+    return redirect('/')
+
+
+
 app.run(debug=True)
