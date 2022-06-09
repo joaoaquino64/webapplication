@@ -1,14 +1,14 @@
 # Ao abrir o GitPod, execute:
 # pip install -r requirements.txt
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from uuid import uuid4
 import csv
 
 app = Flask(__name__)
 
 
-dogs = [{'id': uuid4(), 'Nome': 'Joaquim', 'Raça': 'Lulu da Pomerânia', 'Cor': 'Castanho', 'Idade': '6 meses', 'Status': 'Pronto para adoção'}]
+dogs = [{'id': uuid4(), 'Nome': 'Caramelo', 'Raça': 'Vira Lata', 'Cor': 'Caramelo', 'Idade': '1 ano', 'Status': 'Pronto para adoção'}]
 
 with open('dogs.csv', 'w') as file_out:
     escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
@@ -31,7 +31,6 @@ def save():
     idade = request.form['Idade']
     status = request.form['Status']
     dogs.append({'id': uuid4(), 'Nome': nome, 'Raça': raça, 'Cor': cor, 'Idade': idade, 'Status': status})
-    return render_template('home.html', dogs=dogs)
-
+    return redirect('/')
 
 app.run(debug=True)
