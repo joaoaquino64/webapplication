@@ -56,6 +56,10 @@ def update(id):
     dogs[dog_editado] = {'id': id_dog_editado, 'Nome': nome, 'Raça': raça, 'Cor': cor, 'idade': idade, 'Status': status}
     return redirect('/')
 
-
+@app.route('/adoption')
+def delete(id):
+    for dog in dogs:
+        id_string = str(dog['id'])
+        if id_string == id:
 
 app.run(debug=True)
