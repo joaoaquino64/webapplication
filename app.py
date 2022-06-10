@@ -8,17 +8,19 @@ import csv
 app = Flask(__name__)
 
 
-dogs = [{'id': uuid4(), 'Nome': 'Caramelo', 'Raça': 'Vira Lata', 'Cor': 'Caramelo', 'Idade': '1 ano', 'Status': 'Pronto para adoção'}]
+dogs = [
+    {'id': uuid4(), 'Nome': 'Caramelo', 'Raça': 'Vira Lata', 'Cor': 'Caramelo', 'Idade': '1 ano', 'Status': 'Pronto para adoção'},
+    {'id': uuid4(), 'Nome': 'Melissa', 'Raça': 'Shitzu', 'Cor': 'Branca', 'Idade': '3 meses', 'Status': 'Necessita de vacinação'}
+    ]
 
-def salvar_arquivo():
-    with open('dogs.csv', 'w') as file_out:
-        escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
-        escritor.writeheader()
-        escritor.writerows(dogs)
+with open('dogs.csv', 'w') as file_out:
+    escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
+    escritor.writeheader()
+    escritor.writerows(dogs)
+
 
 @app.route('/')
 def home():
-    salvar_arquivo()
     return render_template('home.html', dogs=dogs) 
 
 @app.route('/add')
@@ -46,8 +48,7 @@ def edit(id):
 def update(id):
     for dog in dogs:
         id_string = str(dog['id'])
-        if id_string == id:
-            dog_editado = dogs.index(dog)
+        if id == id_string:
             id_dog_editado = dog['id']
 
     nome = request.form['Nome']
@@ -55,7 +56,7 @@ def update(id):
     cor = request.form['Cor']
     idade = request.form['Idade']
     status = request.form['Status']
-    dogs[dog_editado] = {'id': id_dog_editado, 'Nome': nome, 'Raça': raça, 'Cor': cor, 'Idade': idade, 'Status': status}
+    dogs[dogs.index(dog)] = {'id': id_dog_editado, 'Nome': nome, 'Raça': raça, 'Cor': cor, 'Idade': idade, 'Status': status}
     return redirect('/')
 
 @app.route('/adoption/<id>')
@@ -63,6 +64,7 @@ def delete(id):
     for dog in dogs:
         id_string = str(dog['id'])
         if id_string == id:
-            return
+            del dogs[dogs.index(dog)]
+            return redirect('/')
 
 app.run(debug=True)

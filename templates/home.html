@@ -29,7 +29,7 @@
                     <td>{{dog['Idade']}}</td>
                     <td>{{dog['Status']}}</td>
                     <td><a href="/edit/{{dog['id']}}" class="btn btn-warning">Editar</a></td>
-                    <td><a href="/adoption" class="btn btn-success">Adotar</a></td>
+                    <td><a href="/adoption/{{dog['id']}}" class="btn btn-success">Adotar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
