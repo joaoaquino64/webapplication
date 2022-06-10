@@ -11,16 +11,22 @@ app = Flask(__name__)
 dogs = [
     {'id': uuid4(), 'Nome': 'Caramelo', 'Raça': 'Vira Lata', 'Cor': 'Caramelo', 'Idade': '1 ano', 'Status': 'Pronto para adoção'},
     {'id': uuid4(), 'Nome': 'Melissa', 'Raça': 'Shitzu', 'Cor': 'Branca', 'Idade': '3 meses', 'Status': 'Necessita de vacinação'}
-    ]
+]
 
-with open('dogs.csv', 'w') as file_out:
-    escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
+with open('dogs.csv', 'w') as file_in:
+    escritor = csv.DictWriter(file_in, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
     escritor.writeheader()
     escritor.writerows(dogs)
 
+def salvar_csv():
+    with open('dogs.csv', 'a') as file_out:
+        escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
+        for dog in dogs:
+            escritor.writerow(dict(dog))
 
 @app.route('/')
 def home():
+    salvar_csv()
     return render_template('home.html', dogs=dogs) 
 
 @app.route('/add')
