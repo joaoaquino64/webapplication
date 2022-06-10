@@ -13,16 +13,16 @@ dogs = [
     {'id': uuid4(), 'Nome': 'Melissa', 'Raça': 'Shitzu', 'Cor': 'Branca', 'Idade': '3 meses', 'Status': 'Necessita de vacinação'}
 ]
 
-with open('dogs.csv', 'w') as file_in:
-    escritor = csv.DictWriter(file_in, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
-    escritor.writeheader()
-    escritor.writerows(dogs)
+with open('dogs.csv', 'r') as file_in:
+    ler = csv.DictReader(file_in, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
+    for dog in ler:
+        dogs.append(dict(dog))
 
 def salvar_csv():
     with open('dogs.csv', 'a') as file_out:
         escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
-        for dog in dogs:
-            escritor.writerow(dict(dog))
+        escritor.writeheader()
+        escritor.writerows(dogs)
 
 @app.route('/')
 def home():
