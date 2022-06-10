@@ -10,13 +10,15 @@ app = Flask(__name__)
 
 dogs = [{'id': uuid4(), 'Nome': 'Caramelo', 'Raça': 'Vira Lata', 'Cor': 'Caramelo', 'Idade': '1 ano', 'Status': 'Pronto para adoção'}]
 
-with open('dogs.csv', 'w') as file_out:
-    escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
-    escritor.writeheader()
-    escritor.writerows(dogs)
+def salvar_arquivo():
+    with open('dogs.csv', 'w') as file_out:
+        escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
+        escritor.writeheader()
+        escritor.writerows(dogs)
 
 @app.route('/')
 def home():
+    salvar_arquivo()
     return render_template('home.html', dogs=dogs) 
 
 @app.route('/add')
@@ -61,6 +63,6 @@ def delete(id):
     for dog in dogs:
         id_string = str(dog['id'])
         if id_string == id:
-            return 'esperanto'
+            return
 
 app.run(debug=True)
