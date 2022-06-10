@@ -8,10 +8,7 @@ import csv
 app = Flask(__name__)
 
 
-dogs = [
-    {'id': uuid4(), 'Nome': 'Caramelo', 'Raça': 'Vira Lata', 'Cor': 'Caramelo', 'Idade': '1 ano', 'Status': 'Pronto para adoção'},
-    {'id': uuid4(), 'Nome': 'Melissa', 'Raça': 'Shitzu', 'Cor': 'Branca', 'Idade': '3 meses', 'Status': 'Necessita de vacinação'}
-]
+dogs = []
 
 with open('dogs.csv', 'r') as file_in:
     l = csv.DictReader(file_in)
