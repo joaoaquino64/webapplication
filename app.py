@@ -53,13 +53,14 @@ def update(id):
     cor = request.form['Cor']
     idade = request.form['Idade']
     status = request.form['Status']
-    dogs[dog_editado] = {'id': id_dog_editado, 'Nome': nome, 'Raça': raça, 'Cor': cor, 'idade': idade, 'Status': status}
+    dogs[dog_editado] = {'id': id_dog_editado, 'Nome': nome, 'Raça': raça, 'Cor': cor, 'Idade': idade, 'Status': status}
     return redirect('/')
 
-@app.route('/adoption')
+@app.route('/adoption/<id>')
 def delete(id):
     for dog in dogs:
         id_string = str(dog['id'])
         if id_string == id:
+            return 'esperanto'
 
 app.run(debug=True)
