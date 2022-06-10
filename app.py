@@ -14,15 +14,15 @@ dogs = [
 ]
 
 with open('dogs.csv', 'r') as file_in:
-    ler = csv.DictReader(file_in, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
-    for dog in ler:
+    l = csv.DictReader(file_in)
+    for dog in l:
         dogs.append(dict(dog))
 
 def salvar_csv():
-    with open('dogs.csv', 'a') as file_out:
-        escritor = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
-        escritor.writeheader()
-        escritor.writerows(dogs)
+    with open('dogs.csv', 'w') as file_out:
+        e = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
+        e.writeheader()
+        e.writerows(dogs)
 
 @app.route('/')
 def home():
