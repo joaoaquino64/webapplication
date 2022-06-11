@@ -15,15 +15,12 @@ with open('dogs.csv', 'r') as file_in:
     for dog in l:
         dogs.append(dict(dog))
 
-def salvar_csv():
+@app.route('/')
+def home():
     with open('dogs.csv', 'w') as file_out:
         e = csv.DictWriter(file_out, ['id', 'Nome', 'Raça', 'Cor', 'Idade', 'Status'])
         e.writeheader()
         e.writerows(dogs)
-
-@app.route('/')
-def home():
-    salvar_csv()
     return render_template('home.html', dogs=dogs) 
 
 @app.route('/add')
