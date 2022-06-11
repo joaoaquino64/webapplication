@@ -68,6 +68,7 @@ def delete(id):
         id_string = str(dog['id'])
         if id_string == id:
             del dogs[dogs.index(dog)]
-            return redirect('/')
+            return render_template('adoptioned.html')
+
 
 app.run(debug=True)
