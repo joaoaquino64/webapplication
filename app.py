@@ -7,7 +7,6 @@ import csv
 
 app = Flask(__name__)
 
-
 dogs = []
 
 with open('dogs.csv', 'r') as file_in:
@@ -66,6 +65,5 @@ def delete(id):
         if id_string == id:
             del dogs[dogs.index(dog)]
             return render_template('adoptioned.html')
-
 
 app.run(debug=True)
