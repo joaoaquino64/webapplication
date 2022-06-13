@@ -1,6 +1,3 @@
-# Ao abrir o GitPod, execute:
-# pip install -r requirements.txt
-
 from flask import Flask, render_template, request, redirect
 from uuid import uuid4
 import csv
